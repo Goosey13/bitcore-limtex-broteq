@@ -277,8 +277,21 @@ crypto_libbitcore_crypto_a_SOURCES = \
   crypto/cubehash.c \
   crypto/shavite.c \
   crypto/simd.c \
- crypto/echo.c \
-  crypto/scrypt.h \
+	crypto/echo.c \
+  crypto/lyra2.cpp \
+	crypto/lyra2.h \
+	crypto/sponge.cpp \
+	crypto/sponge.h \
+	crypto/hamsi.c \
+	crypto/fugue.c \
+	crypto/shabal.c \
+	crypto/whirlpool.c \
+	crypto/sha2.c \
+	crypto/haval.c \
+	crypto/tiger.cpp \
+	crypto/gost_streebog.c \
+	crypto/gost_streebog.h \
+	crypto/SWIFFTX/SWIFFTX.c \
   crypto/sph_types.h \
   crypto/sph_blake.h \
   crypto/sph_bmw.h \
@@ -291,7 +304,16 @@ crypto_libbitcore_crypto_a_SOURCES = \
   crypto/sph_shavite.h \
   crypto/sph_simd.h \
   crypto/sph_echo.h \
-  crypto/hashblock.h \
+	crypto/sph_hamsi.h \
+	crypto/sph_fugue.h \
+	crypto/sph_shabal.h \
+	crypto/sph_whirlpool.h \
+	crypto/sph_sha2big.c \
+	crypto/sph_sha2.h \
+	crypto/sph_haval.h \
+	crypto/sph_tiger.h \
+	crypto/SWIFFTX/SWIFFTX.h \
+	crypto/hashblock.h \
   crypto/sha1.cpp \
   crypto/sha1.h \
   crypto/sha256.cpp \

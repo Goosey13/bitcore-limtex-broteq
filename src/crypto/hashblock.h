@@ -15,6 +15,26 @@
 #include "sph_echo.h"
 //#include "util.h"
 #include <algorithm>    // std::next_permutation
+//Timetravel 10
+// Beginn Timetravel 20
+#include "sph_hamsi.h"
+#include "sph_fugue.h"
+#include "sph_shabal.h"
+#include "sph_whirlpool.h"
+#include "sph_sha2.h"
+#include "sph_haval.h"
+#include "sph_tiger.h"
+#include "lyra2.h"
+#include "gost_streebog.h"
+#include "SWIFFTX/SWIFFTX.h"
+#include "ripemd160.h"
+#include "sha256.h"
+
+
+//#include "serialize.h"
+//#include "uint256.h"
+//#include "version.h"
+//#include <vector>
 
 #ifndef QT_NO_DEBUG
 #include <string>
@@ -37,6 +57,16 @@ GLOBAL sph_cubehash512_context  z_cubehash;
 GLOBAL sph_shavite512_context   z_shavite;
 GLOBAL sph_simd512_context      z_simd;
 GLOBAL sph_echo512_context      z_echo;
+//T20
+GLOBAL sph_hamsi512_context     z_hamsi;
+GLOBAL sph_fugue512_context     z_fugue;
+GLOBAL sph_shabal512_context    z_shabal;
+GLOBAL sph_whirlpool_context    z_whirlpool;
+GLOBAL sph_sha512_context       z_sha2;
+GLOBAL sph_haval256_5_context   z_haval;
+GLOBAL sph_tiger_context        z_tiger;
+GLOBAL sph_gost512_context      z_gost;
+GLOBAL sph_sha256_context       z_sha;
 
 #define fillz() do { \
     sph_blake512_init(&z_blake); \
@@ -50,8 +80,18 @@ GLOBAL sph_echo512_context      z_echo;
     sph_shavite512_init(&z_shavite); \
     sph_simd512_init(&z_simd); \
     sph_echo512_init(&z_echo); \
-} while (0) 
+    sph_hamsi512_init(&z_hamsi); \
+    sph_fugue512_init(&z_fugue); \
+    sph_shabal512_init(&z_shabal); \
+    sph_whirlpool_init(&z_whirlpool); \
+    sph_sha512_init(&z_sha2); \
+    sph_haval256_5_init(&z_haval); \
+    sph_tiger_init(&z_tiger); \
+    sph_gost512_init(&z_gost); \
+    sph_sha256_init(&z_sha); \
+} while (0)
 
+// Not used ??
 #define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
 #define ZBMW (memcpy(&ctx_bmw, &z_bmw, sizeof(z_bmw)))
 #define ZGROESTL (memcpy(&ctx_groestl, &z_groestl, sizeof(z_groestl)))
@@ -59,9 +99,15 @@ GLOBAL sph_echo512_context      z_echo;
 #define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
 #define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
 
+//Timetravel 10
 #define HASH_FUNC_BASE_TIMESTAMP 1492973331 // BitCore: Genesis Timestamp
 #define HASH_FUNC_COUNT 10                   // BitCore: HASH_FUNC_COUNT of 11
 #define HASH_FUNC_COUNT_PERMUTATIONS 40320  // BitCore: HASH_FUNC_COUNT!
+
+//Timetravel 20
+#define HASH_FUNC_BASE_TIMESTAMP_T20 1492973331 // BitCore: Genesis Timestamp
+#define HASH_FUNC_COUNT_T20 20                   // BitCore: HASH_FUNC_COUNT of 20
+#define HASH_FUNC_COUNT_PERMUTATIONS_T20 1581386305314820000  // BitCore: HASH_FUNC_COUNT!
 
 template<typename T1>
 inline uint256 HashTimeTravel(const T1 pbegin, const T1 pend, uint32_t timestamp)
@@ -107,7 +153,7 @@ inline uint256 HashTimeTravel(const T1 pbegin, const T1 pend, uint32_t timestamp
                 if (i == 0)
                     sph_blake512 (&ctx_blake, (pbegin == pend ? pblank : static_cast<const void*>(&pbegin[0])), (pend - pbegin) * sizeof(pbegin[0]));
                 else
-                    sph_blake512 (&ctx_blake, static_cast<const void*>(&hash[i-1]), 64);                
+                    sph_blake512 (&ctx_blake, static_cast<const void*>(&hash[i-1]), 64);
                 sph_blake512_close(&ctx_blake, static_cast<void*>(&hash[i]));
             break;
             case 1:
@@ -196,5 +242,6 @@ inline uint256 HashTimeTravel(const T1 pbegin, const T1 pend, uint32_t timestamp
     return ArithToUint256(hash[HASH_FUNC_COUNT-1].trim256());
 
 }
+
 
 #endif // HASHBLOCK_H
