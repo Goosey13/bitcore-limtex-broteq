@@ -286,7 +286,6 @@ crypto_libbitcore_crypto_a_SOURCES = \
 	crypto/fugue.c \
 	crypto/shabal.c \
 	crypto/whirlpool.c \
-	crypto/sha2.c \
 	crypto/haval.c \
 	crypto/tiger.cpp \
 	crypto/gost_streebog.c \
@@ -308,8 +307,6 @@ crypto_libbitcore_crypto_a_SOURCES = \
 	crypto/sph_fugue.h \
 	crypto/sph_shabal.h \
 	crypto/sph_whirlpool.h \
-	crypto/sph_sha2big.c \
-	crypto/sph_sha2.h \
 	crypto/sph_haval.h \
 	crypto/sph_tiger.h \
 	crypto/SWIFFTX/SWIFFTX.h \

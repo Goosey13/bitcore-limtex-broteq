@@ -21,7 +21,7 @@
 #include "sph_fugue.h"
 #include "sph_shabal.h"
 #include "sph_whirlpool.h"
-#include "sph_sha2.h"
+//#include "sph_sha2.h"
 #include "sph_haval.h"
 #include "sph_tiger.h"
 #include "lyra2.h"
@@ -62,7 +62,7 @@ GLOBAL sph_hamsi512_context     z_hamsi;
 GLOBAL sph_fugue512_context     z_fugue;
 GLOBAL sph_shabal512_context    z_shabal;
 GLOBAL sph_whirlpool_context    z_whirlpool;
-GLOBAL sph_sha512_context       z_sha2;
+//GLOBAL sph_sha512_context       z_sha2;
 GLOBAL sph_haval256_5_context   z_haval;
 GLOBAL sph_tiger_context        z_tiger;
 GLOBAL sph_gost512_context      z_gost;
@@ -84,12 +84,13 @@ GLOBAL sph_sha256_context       z_sha;
     sph_fugue512_init(&z_fugue); \
     sph_shabal512_init(&z_shabal); \
     sph_whirlpool_init(&z_whirlpool); \
-    sph_sha512_init(&z_sha2); \
     sph_haval256_5_init(&z_haval); \
     sph_tiger_init(&z_tiger); \
     sph_gost512_init(&z_gost); \
     sph_sha256_init(&z_sha); \
 } while (0)
+
+//  sph_sha512_init(&z_sha2); \
 
 // Not used ??
 #define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
