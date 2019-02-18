@@ -66,7 +66,7 @@ GLOBAL sph_whirlpool_context    z_whirlpool;
 GLOBAL sph_haval256_5_context   z_haval;
 GLOBAL sph_tiger_context        z_tiger;
 GLOBAL sph_gost512_context      z_gost;
-GLOBAL sph_sha256_context       z_sha;
+//GLOBAL sph_sha256_context       z_sha;
 
 #define fillz() do { \
     sph_blake512_init(&z_blake); \
@@ -87,9 +87,8 @@ GLOBAL sph_sha256_context       z_sha;
     sph_haval256_5_init(&z_haval); \
     sph_tiger_init(&z_tiger); \
     sph_gost512_init(&z_gost); \
-    sph_sha256_init(&z_sha); \
 } while (0)
-
+//  sph_sha256_init(&z_sha); \
 //  sph_sha512_init(&z_sha2); \
 
 // Not used ??
